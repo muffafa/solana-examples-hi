@@ -135,11 +135,11 @@ async function main() {
 
   // await pingProgram(connection, signer, PROGRAM_DATA_PUBLIC_KEY, PROGRAM_ID);
 
-  const MY_PUBLIC_KEY = new Web3.PublicKey("2AYwCyUGr53qup83zV58vaXVkBZkrsa7iFKg5c5xgQLJ");
+  // const MY_PUBLIC_KEY = new Web3.PublicKey("2AYwCyUGr53qup83zV58vaXVkBZkrsa7iFKg5c5xgQLJ");
 
-  await checkBalance(connection, signer);
+  // await checkBalance(connection, signer);
 
-  await sendSol(connection, 0.1*Web3.LAMPORTS_PER_SOL, MY_PUBLIC_KEY, signer);
+  // await sendSol(connection, 0.1*Web3.LAMPORTS_PER_SOL, MY_PUBLIC_KEY, signer);
 
   await checkBalance(connection, signer);
 }
