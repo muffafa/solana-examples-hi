@@ -1,5 +1,4 @@
-import * as borsh from '@project-serum/borsh'
-
+import * as borsh from "@project-serum/borsh"
 export class Movie {
     title: string;
     rating: number;
@@ -25,31 +24,9 @@ export class Movie {
         borsh.str('description'),
     ])
 
-    static borshAccountSchema = borsh.struct([
-        borsh.bool('initialized'),
-        borsh.u8('rating'),
-        borsh.str('title'),
-        borsh.str('description'),
-    ])
-
     serialize(): Buffer {
         const buffer = Buffer.alloc(1000)
-        this.borshInstructionSchema.encode({ ...this, variant: 0 }, buffer)
+        this.borshInstructionSchema.encode({ ...this, vaiant: 0}, buffer)
         return buffer.slice(0, this.borshInstructionSchema.getSpan(buffer))
-    }
-
-    static deserialize(buffer?: Buffer): Movie | null {
-        if (!buffer) {
-            return null
-        }
-
-        try {
-            const { title, rating, description } = this.borshAccountSchema.decode(buffer)
-            return new Movie(title, rating, description)
-        } catch (e) {
-            console.log('Deserialization error:', e)
-            console.log(buffer)
-            return null
-        }
     }
 }
